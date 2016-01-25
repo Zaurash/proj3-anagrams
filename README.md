@@ -12,3 +12,11 @@ Initial version by M Young; revised by Zachary Jones
 
 vocab.html
 flask_vocab.py
+
+## File to run
+
+flask_vocab.py
+
+## Argument
+
+text file in data folder
