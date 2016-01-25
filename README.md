@@ -1,19 +1,22 @@
 
-## Overview
+## IX Path
 
-The vocabulary word list is fixed for one invocation of the server, so multiple
-students connected to the same server will see the same vocabulary list but may 
-have different anagrams.
+Files may be found ix at /home/users/zgj/CIS399/Project3/proj3-anagrams
 
 ## Authors 
 
 Initial version by M Young; revised by Zachary Jones 
 
 
-## To run automated tests 
-* `nosetests`
+## Files Changed
 
-There are currently nose tests for vocab.py, letterbag.py, and jumble.py. 
+vocab.html
+flask_vocab.py
 
+## File to run
 
+flask_vocab.py
 
+## Argument
+
+text file in data folder
