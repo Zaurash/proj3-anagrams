@@ -37,7 +37,7 @@ def index():
 def countem():
   text = request.args.get("text", type=str)
   length = len(text)
-  rslt = { "long_enough": length > 5 }
+  rslt = { "long_enough": length > 4 }
   return jsonify(result=rslt)
 
 #############

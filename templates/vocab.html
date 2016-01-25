@@ -84,20 +84,39 @@
     <label for="attempt">Word:</label>
     <input id="attempt" name="attempt" type="text" width="15"
       autocomplete="off"  autofocus />
-    <input type="submit" name="try" />
+	  
+	  <!-- Commented out the button for now -->
+    <!-- <input type="submit" name="try" /> -->
+	
   </form>
 </div></div>
 
 <br />
 
-{% if session.matches|length is not equalto 0  %}
-<h2>You found </h2>
-<p id="results">
-  {% for match in session.matches %}
-  {{ match }} 
-  {% endfor %}
-</p>
-{% endif %}
+
+<p id = "response"> </p>
+
+	<script>
+ 
+	$("#entry").submit( function(event) {
+	   event.preventDefault();
+	   });
+ 
+	$("#attempt").keyup(function() {
+	   var txt = $("#attempt").val();
+	   $.getJSON( "/_check", { text: txt }, 
+	   		function(data) {
+	                 rsval = data.result.match_found;
+	                 console.log("rsval: " + rsval)
+	                 if (rsval) {
+	                    $("#response").html("Kill Screen");
+	                    $("#attempt").val("");
+	                 } 
+	                }
+	            );
+	    });
+	
+	</script>
 
 
 {% with messages = get_flashed_messages() %}
@@ -112,4 +131,7 @@
 
 
  </div> <!-- container -->
+ 
+
+ 
 </body> </html>
