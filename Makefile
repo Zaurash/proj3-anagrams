@@ -9,14 +9,14 @@
 
 # Configuration 
 #
-PYVENV = /usr/bin/env pyvenv-3.5  # This is the version in ix.cs.uoregon.edu
+PYVENV = /usr/bin/env pyvenv-3.4  # This is the version in ix.cs.uoregon.edu
 
 ##
 ## Install in a new environment:
 ##     We need to rebuild the Python environment to match
 ##     
 install:
-	# pyvenv-3.5 env ### BUGGY on ix
+	# pyvenv-3.4 env ### BUGGY on ix
 	echo "pyvenv without PIP to work around ubuntu bug"
 	$(PYVENV) --without-pip env
 	echo ""
