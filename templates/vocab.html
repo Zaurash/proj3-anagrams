@@ -106,12 +106,17 @@
 	   var txt = $("#attempt").val();
 	   $.getJSON( "/_check", { text: txt }, 
 	   		function(data) {
+					 oneval = data.result.matcher;
 	                 rsval = data.result.match_found;
 	                 console.log("rsval: " + rsval)
 	                 if (rsval) {
-	                    $("#response").html("Kill Screen");
+	                    $("#response").html("You won!");
 	                    $("#attempt").val("");
 	                 } 
+					 else if (oneval){
+ 	                    $("#response").append(txt);
+	                    $("#attempt").val("");
+					 }
 	                }
 	            );
 	    });

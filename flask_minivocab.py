@@ -97,27 +97,28 @@ def check():
   ## Is it good? 
   in_jumble = LetterBag(jumble).contains(text)
   matched = WORDS.has(text)
+  rslt = False
 
   ## Respond appropriately 
   if matched and in_jumble and not (text in matches):
         ## Cool, they found a new word
         matches.append(text)
         flask.session["matches"] = matches
+        rslt = { "matcher": len(matches) < flask.session["target_count"] }
+        
   elif text in matches:
-        # flask.flash("You already found {}".format(text))
         pass
 
   elif not matched:
-        # flask.flash("{} isn't in the list of words".format(text))
         pass
 
   elif not in_jumble:
-        flask.flash('"{}" can\'t be made from the letters {}'.format(text,jumble))
-
+        pass
   else:
         app.logger.debug("This case shouldn't happen!")
         assert False  # Raises AssertionError
-  rslt = { "match_found": len(matches) >= flask.session["target_count"] }
+  if len(matches) >= flask.session["target_count"]:
+      rslt = { "match_found": True }
   return jsonify(result=rslt)
 
 
