@@ -108,15 +108,14 @@ def check():
         
   elif text in matches:
         rslt = { "already_found": True }
-        pass
-
-  elif not matched:
-        rslt = { "bad_word": True }
-        pass
 
   elif not in_jumble:
         rslt = { "bad_input": True }
-        pass
+
+  elif not matched:
+        rslt = { "bad_word": True }
+
+
   else:
         app.logger.debug("This case shouldn't happen!")
         assert False  # Raises AssertionError

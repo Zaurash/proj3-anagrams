@@ -133,7 +133,8 @@
 					 }
 					 
 					 else if (invalid_characters) {
-					                $("#errors").html(txt+ " can\'t be made from the availble letters!");
+ 	                    $("#attempt").val("");
+					                
 					             }
 								 
 					 else if (invalid_word) {
@@ -141,7 +142,7 @@
 					             }
 								 
 					 else if (been_found) {
-					                $("#errors").html(txt+ " has already been found!");
+					                $("#errors").html(txt+ " has already been found");
 					             }
 	                }
 	            );
