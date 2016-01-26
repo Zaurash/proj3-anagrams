@@ -107,12 +107,15 @@ def check():
         rslt = { "matcher": len(matches) < flask.session["target_count"] }
         
   elif text in matches:
+        rslt = { "already_found": True }
         pass
 
   elif not matched:
+        rslt = { "bad_word": True }
         pass
 
   elif not in_jumble:
+        rslt = { "bad_input": True }
         pass
   else:
         app.logger.debug("This case shouldn't happen!")

@@ -93,7 +93,8 @@
 
 <br />
 
-
+<p id="errors"></p>
+<h2> You've found: </h2>
 <p id = "response"> </p>
 
 	<script>
@@ -106,16 +107,42 @@
 	   var txt = $("#attempt").val();
 	   $.getJSON( "/_check", { text: txt }, 
 	   		function(data) {
+				
 					 oneval = data.result.matcher;
+	                 // console.log("one: " + rsval)
+					 
 	                 rsval = data.result.match_found;
 	                 console.log("rsval: " + rsval)
+					 
+		             invalid_characters = data.result.bad_input;
+		             console.log("invalid_chars: " + invalid_characters)
+					 
+		             invalid_word = data.result.bad_word;
+		             console.log("invalid_word: " + invalid_word)
+					 
+		             been_found = data.result.already_found;
+		             console.log("been_found: " + been_found)
+					 
 	                 if (rsval) {
 	                    window.location = "/success"
-	                 } 
+	                 }
+					 
 					 else if (oneval){
  	                    $("#response").html(txt);
 	                    $("#attempt").val("");
 					 }
+					 
+					 else if (invalid_characters) {
+					                $("#errors").html(txt+ " can\'t be made from the availble letters!");
+					             }
+								 
+					 else if (invalid_word) {
+					                $("#errors").html(txt+ " is not in the list");
+					             }
+								 
+					 else if (been_found) {
+					                $("#errors").html(txt+ " has already been found!");
+					             }
 	                }
 	            );
 	    });
