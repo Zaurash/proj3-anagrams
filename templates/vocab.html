@@ -110,8 +110,7 @@
 	                 rsval = data.result.match_found;
 	                 console.log("rsval: " + rsval)
 	                 if (rsval) {
-	                    $("#response").html("You won!");
-	                    $("#attempt").val("");
+	                    window.location = "/success"
 	                 } 
 					 else if (oneval){
  	                    $("#response").html(txt);
